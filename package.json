@@ -4,5 +4,9 @@
   "description": "A template for expressJS apps",
   "main": "index.js",
   "author": "Zaki Benaissa",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
 }
