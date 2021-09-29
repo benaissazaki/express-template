@@ -1,7 +1,7 @@
 // Imports
-const express = require("express")
-const cors = require("cors")
-const middleware = require("./utils/middleware")
+const express = require('express')
+const cors = require('cors')
+const middleware = require('./utils/middleware')
 
 // Instanciations
 const app = express()
@@ -12,8 +12,8 @@ app.use(express.json())
 app.use(middleware.requestLogger)
 
 // Routes
-app.get("/", (req, res) => {
-    res.contentType("html").status(200).send("<h1>Hello world</h1>")
+app.get('/', (req, res) => {
+  res.contentType('html').status(200).send('<h1>Hello world</h1>')
 })
 
 // Middlewares for unhandled requests
