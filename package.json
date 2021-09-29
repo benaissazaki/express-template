@@ -1,0 +1,8 @@
+{
+  "name": "express-template",
+  "version": "1.0.0",
+  "description": "A template for expressJS apps",
+  "main": "index.js",
+  "author": "Zaki Benaissa",
+  "license": "MIT"
+}
