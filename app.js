@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const middleware = require('./utils/middleware')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
+const exampleRouter = require('./controllers/example')
 
 // Instanciations
 const app = express()
@@ -28,6 +29,7 @@ app.use(middleware.requestLogger)
 app.get('/', (req, res) => {
   res.contentType('html').status(200).send('<h1>Hello world</h1>')
 })
+app.use('/api/example', exampleRouter)
 
 // Middlewares for unhandled requests
 app.use(middleware.unknownEndpoint)

@@ -17,7 +17,8 @@ const errorHandler = (error, req, res, next) => {
 
   // Special treatment depending on the type of error
   switch (error.name) {
-
+  case 'ValidationError':
+    return res.status(400).json({ error: error.message })
   default:
     break
   }
