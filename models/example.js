@@ -11,4 +11,4 @@ const exampleSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose('Example', exampleSchema)
+module.exports = mongoose.model('Example', exampleSchema)
