@@ -1,10 +1,23 @@
 // Imports
 const express = require('express')
 const cors = require('cors')
+const mongoose = require('mongoose')
 const middleware = require('./utils/middleware')
+const config = require('./utils/config')
+const logger = require('./utils/logger')
 
 // Instanciations
 const app = express()
+
+// Connection to MongoDB
+logger.info('⭕\tConnecting to MongoDB')
+mongoose.connect(config.MONGODB_URI)
+  .then(() => {
+    logger.info('✓\t Connected to MongoDB')
+  })
+  .catch((error) => {
+    logger.error('❌\tError connecting to MongoDB: ', error.message)
+  })
 
 // Middlewares
 app.use(cors())
