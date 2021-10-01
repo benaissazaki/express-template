@@ -23,6 +23,14 @@ const errorHandler = (error, req, res, next) => {
     break
   }
 
+  // Test by error's message
+  switch (error.message) {
+  case 'data and salt arguments required':
+    return res.status(400).json({ error: 'Missing password' }) 
+  default:
+    break
+  }
+
   next(error)
 }
 module.exports = {

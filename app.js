@@ -2,10 +2,12 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+require('express-async-errors')
 const middleware = require('./utils/middleware')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
 const exampleRouter = require('./controllers/example')
+const usersRouter = require('./controllers/users')
 
 // Instanciations
 const app = express()
@@ -30,6 +32,7 @@ app.get('/', (req, res) => {
   res.contentType('html').status(200).send('<h1>Hello world</h1>')
 })
 app.use('/api/example', exampleRouter)
+app.use('/api/users', usersRouter)
 
 // Middlewares for unhandled requests
 app.use(middleware.unknownEndpoint)
