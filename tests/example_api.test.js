@@ -19,9 +19,11 @@ const initialData = [
 ]
 beforeEach(async () => {
   await ExampleModel.deleteMany({})
-  initialData.map(async (entry) => {
+  const promiseArray = initialData.map(async (entry) => {
     await (new ExampleModel(entry)).save()
   })
+
+  await Promise.all(promiseArray)   // We wait for every entry to be saved
 })
 
 test('examples are returned as json', async () => {
