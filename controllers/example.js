@@ -3,13 +3,13 @@ const exampleRouter = require('express').Router()
 const ExampleModel = require('../models/example')
 
 // Endpoint definition
-exampleRouter.get('/', (req, res) => {
+exampleRouter.get('/', async (req, res) => {
   ExampleModel.find({}).then((ex) => {
     res.status(200).json(ex.map((e) => e.toJSON()))
   })
 })
 
-exampleRouter.post('/', (req, res, next) => {
+exampleRouter.post('/', async (req, res, next) => {
   const body = req.body
   const example = new ExampleModel({
     ...body
