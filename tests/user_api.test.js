@@ -58,4 +58,15 @@ describe('when there is initially one user in db', () => {
     const usersAtEnd = await helper.usersInDb()
     expect(usersAtEnd).toHaveLength(usersAtStart.length)
   })
+
+  test('retrieval succeeds', async () => {
+    const users = await helper.usersInDb()
+
+    const result = await api
+      .get('/api/users')
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+
+    expect(result.body).toHaveLength(users.length)
+  })
 })
