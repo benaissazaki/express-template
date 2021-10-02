@@ -8,6 +8,7 @@ const config = require('./utils/config')
 const logger = require('./utils/logger')
 const exampleRouter = require('./controllers/example')
 const usersRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
 
 // Instanciations
 const app = express()
@@ -33,6 +34,7 @@ app.get('/', (req, res) => {
 })
 app.use('/api/example', exampleRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 // Middlewares for unhandled requests
 app.use(middleware.unknownEndpoint)
