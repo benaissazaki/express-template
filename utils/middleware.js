@@ -19,6 +19,10 @@ const errorHandler = (error, req, res, next) => {
   switch (error.name) {
   case 'ValidationError':
     return res.status(400).json({ error: error.message })
+  case 'TokenExpiredError':
+    return res.status(401).json({ error: 'Token expired' })
+  case 'JsonWebTokenError':
+    return res.status(401).json({ error: 'invalid token' })
   default:
     break
   }
