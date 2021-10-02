@@ -7,7 +7,7 @@ loginRouter.post('/', async (req, res) => {
   const body = req.body
 
   const user = await User.findOne({ username: body.username })
-  
+
   const isPasswordCorrect = user === null
     ? false
     : await bcrypt.compare(body.password, user.passwordHash)
@@ -23,7 +23,7 @@ loginRouter.post('/', async (req, res) => {
     id: user._id,
   }
 
-  const token = jwt.sign(userForToken, process.env.SECRET)
+  const token = jwt.sign(userForToken, process.env.SECRET, { expiresIn: 60 * 60 * 24 })
 
   res.status(200)
     .send({ token, username: user.username, name: user.name })
